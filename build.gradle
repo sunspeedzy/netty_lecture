@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'zy.netty'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenLocal()  // 读取 maven 本地库,如果依赖jar已存在就不再下载
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }  // 设定下载的maven源的url
+}
+
+dependencies {
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // 以下写法，在 implementation 方法名后小括号前一定要加“空格”
+    implementation (
+            'io.netty:netty-all:4.1.35.Final'
+    )
+}
+
