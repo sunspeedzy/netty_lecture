@@ -10,6 +10,7 @@ import io.netty.util.CharsetUtil;
 import java.net.URI;
 
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
+    // channelRead0表示 服务器端读到了客户端的请求，可以处理请求，发出响应
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
         // 第6课追加
