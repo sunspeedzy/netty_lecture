@@ -42,6 +42,9 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
         Channel channel = ctx.channel();
         // 已断掉的连接不会收到这个方法写入的消息，代码中无须手工调用 channelGroup.remove(channel)
         channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 离开\n");
+        // 验证  在 Handler被remove的时候没有必要调用 channelGroup的remove方法，
+        // 打印的结果表明 channelgroup中handler被remove的channel自动被remove掉了
+        System.out.println(channelGroup.size());
     }
 
     @Override
