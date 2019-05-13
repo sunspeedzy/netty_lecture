@@ -39,3 +39,24 @@ zy.netty.fourthexample的代码是 第9课 Netty读写检测机制与长连接�
   IdleStateHandler 在一段时间内服务端没有从客户端读、向客户端写或两者皆有的话，会触发 IdleStateEvent 事件
                    它是 Netty提供的 空闲检测 用的 Handler
 
+WebSocket 用来解决 HTTP 协议的不足
+HTTP 是无状态的，即多次请求是无关的，所以使用cookie、session来解决HTTP协议数据传输时的状态问题。
+HTTP 是基于请求和响应模式的，一定是先由 客户端向服务端发送请求，建立一个到服务端的连接，
+     服务端收到请求后进行处理并构造response对象响应给客户端，当服务端把响应发送给客户端后，这个连接就断掉了，
+     客户端再次发出请求需要重新建立连接
+在HTTP1.1 中，客户端与服务端建立的连接可以保持一定的时间，在这个时间内客户端向服务端发送的请求可以复用这个连接
+早期，客户端通过轮询可以实现聊天室的场景，但是消息不能即时从服务端发送到客户端，且客户端发送的大部分请求是浪费网络带宽的
+
+WebSocket 可以实现客户端和服务器端的真正意义的长连接，长连接的建立需要客户端向服务端发起，
+          长连接建立后客户端与服务器端对等，彼此之间可以发送消息，且消息中不用包含头信息，
+          实现了服务器端向客户端的推送，也节省了带宽
+详见 https://www.cnblogs.com/wade-luffy/p/6178989.html
+
+zy.netty.fifthexample的代码是 10_Netty对WebSocket的支援 和 11_Netty实现服务器端与客户端的长连接通信 制作
+webapp/test.html 是 11_Netty实现服务器端与客户端的长连接通信 制作
+  用来展示如何用Netty编写WebSocket程序，客户端用编写HTML页面的方式制作。
+  启动 MyServer后，通过 Open in Browser 打开 test.html，Server端会触发 handlerAdded 事件。
+客户端长时间（如1.5小时）不与服务端交互，再次刷新 test.html，handlerAdded 会被触发，而 handlerRemoved 事件不会被触发。
+客户端连接服务端后，短时间再刷新，会依次触发 handlerRemoved handlerAdded 两个事件。
+  尝试在能联通的两台电脑上，分别运行 客户端 和 服务端 程序，然后断掉网络连接，看看服务端或客户端是否能够感知连接断掉。
+以此体会 心跳机制 对长连接支持的必要性。
