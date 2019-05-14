@@ -21,7 +21,9 @@ dependencies {
 //    testCompile group: 'junit', name: 'junit', version: '4.12'
     // 以下写法，在 implementation 方法名后小括号前一定要加“空格”
     implementation (
-            'io.netty:netty-all:4.1.35.Final'
+            'io.netty:netty-all:4.1.35.Final',
+            'com.google.protobuf:protobuf-java:3.7.1',
+            'com.google.protobuf:protobuf-java-util:3.7.1'
     )
 }
 
