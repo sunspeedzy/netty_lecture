@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package zy.protobuf;
+
+option optimize_for = SPEED;  // 加快文件解析速度
+option java_package = "zy.protobuf";
+option java_outer_classname = "DataInfo";
+
+message Student {
+    required string name = 1;
+    optional int32 age = 2 ;
+    optional string address = 3;
+}
+
+
