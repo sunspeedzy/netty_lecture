@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package zy.protobuf;
+
+option optimize_for = SPEED;  // 加快文件解析速度
+option java_package = "zy.netty.sixthexample";
+option java_outer_classname = "MyDataInfo";
+
+message Person {
+    required string name = 1;
+    optional int32 age = 2 ;
+    optional string address = 3;
+}
+
+

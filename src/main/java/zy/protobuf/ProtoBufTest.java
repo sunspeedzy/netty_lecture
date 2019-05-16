@@ -20,5 +20,9 @@ public class ProtoBufTest {
         System.out.println(student2.getName());
         System.out.println(student2.getAge());
         System.out.println(student2.getAddress());
+//        输出结果
+//        张三
+//        20
+//        北京
     }
 }

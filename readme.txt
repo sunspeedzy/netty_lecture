@@ -75,3 +75,7 @@ RPC 与 RMI 类似，但很多 RPC 框架是跨语言的。RPC 编写模式类�
 3. 在客户端与服务器端分别引入 RPC 编译器所生成的文件，即可像调用本地方法一样调用远程方法
 
 protobuf 中的代码由 15_Protobuf集成Netty与多协议消息传递 制作
+
+zy.netty.sixthexample的代码是 15_Protobuf集成Netty与多协议消息传递 制作
+
+
