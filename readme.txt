@@ -78,4 +78,13 @@ protobuf 中的代码由 15_Protobuf集成Netty与多协议消息传递 制作
 
 zy.netty.sixthexample的代码是 15_Protobuf集成Netty与多协议消息传递 制作
 
+永远不能安全地向 .proto 定义添加 required 字段，也不能安全地删除现有的 required 字段，因为这两个操作都会破坏兼容性。
+例如，如果向 .proto 定义添加 required 字段，则使用旧定义构建的二进制文件将无法解析使用旧定义序列化的数据，因为旧数据中不存在 required 字段。
+推荐不使用 required 字段
+
+解决向Server和Client的连接通道中，发送不同的由ProtoBuffer编解码的类实例的问题，
+参考 src\protobuf\Person.proto 和 sixthexample里的代码
+
+
+
 

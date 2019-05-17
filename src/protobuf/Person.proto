@@ -5,11 +5,38 @@ package zy.protobuf;
 option optimize_for = SPEED;  // 加快文件解析速度
 option java_package = "zy.netty.sixthexample";
 option java_outer_classname = "MyDataInfo";
+// 这个示例可以解决向Server和Client的连接通道中，发送不同的由ProtoBuffer编解码的类实例的问题
+message MyMessage {
+    enum DataType {
+        PersonType = 1;
+        DogType = 2;
+        CatType = 3;
+    }
+
+    required DataType data_type = 1;
+
+    // oneof 中的所有成员可以共享内存，同一时刻只允许其中一个成员使用这个内存，
+    // 它会清除其他成员在内存中的信息
+    oneof dataBody {
+        Person person = 2;
+        Dog dog = 3;
+        Cat cat = 4;
+    }
+}
 
 message Person {
-    required string name = 1;
+//    required string name = 1;
+    optional string name = 1;
     optional int32 age = 2 ;
     optional string address = 3;
 }
 
+message Dog {
+    optional string name = 1;
+    optional int32 age = 2 ;
+}
 
+message Cat {
+    optional string name = 1;
+    optional string city = 2;
+}

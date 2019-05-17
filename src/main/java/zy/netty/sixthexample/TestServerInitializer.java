@@ -15,7 +15,8 @@ public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
 
         // Netty 提供了 4 个用于 Protobuf 的处理器
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
-        pipeline.addLast(new ProtobufDecoder(MyDataInfo.Person.getDefaultInstance()));
+        //传递最外层的类MyMessage而不是Person
+        pipeline.addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new ProtobufEncoder());
 
