@@ -85,6 +85,9 @@ zy.netty.sixthexample的代码是 15_Protobuf集成Netty与多协议消息传递
 解决向Server和Client的连接通道中，发送不同的由ProtoBuffer编解码的类实例的问题，
 参考 src\protobuf\Person.proto 和 sixthexample里的代码
 
+zy.thrift 和 thrift 中的代码是 18_Apache Thrift应用详解与实例剖析 制作
+
+
 
 
 
