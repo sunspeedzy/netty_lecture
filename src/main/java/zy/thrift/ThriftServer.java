@@ -17,11 +17,11 @@ public class ThriftServer {
         PersonService.Processor<PersonServiceImpl> processor =
                 new PersonService.Processor<>(new PersonServiceImpl());
 
-        arg.protocolFactory(new TCompactProtocol.Factory());
-        arg.transportFactory(new TFramedTransport.Factory());
+        arg.protocolFactory(new TCompactProtocol.Factory());  // 将信息压缩的协议
+        arg.transportFactory(new TFramedTransport.Factory()); // 传输协议
         arg.processorFactory(new TProcessorFactory(processor));
 
-        TServer server = new THsHaServer(arg);
+        TServer server = new THsHaServer(arg);   //  半同步半异步Server
         System.out.println("Thrift Server Started!");
 
         server.serve();// 死循环一个，且异步非阻塞

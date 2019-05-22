@@ -1,4 +1,5 @@
-namespace java thrift.generated
+namespace java thrift.generated // 针对 java 语言
+namespace py py.thrift.generated // 针对 python 语言
 
 typedef i16 short
 typedef i32 int

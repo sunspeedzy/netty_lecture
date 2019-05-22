@@ -85,9 +85,24 @@ zy.netty.sixthexample的代码是 15_Protobuf集成Netty与多协议消息传递
 解决向Server和Client的连接通道中，发送不同的由ProtoBuffer编解码的类实例的问题，
 参考 src\protobuf\Person.proto 和 sixthexample里的代码
 
+运行以下命令，可以将protobuffer的IDL生成java代码
+c:\protobuf\protoc-3.7.1\bin\protoc.exe --java_out=src\main\java src\protobuf\Person.proto
+
 zy.thrift 和 thrift 中的代码是 18_Apache Thrift应用详解与实例剖析 制作
 
+20_通过Apache Thrift实现Java与Python的RPC调用
 
+命令行下运行以下命令，可以将thrift的IDL生成为java和python代码，位于 gen-java 和 gen-py 路径下
+C:\thrift\thrift-0.12.0.exe --gen java src\thrift\data.thrift
+C:\thrift\thrift-0.12.0.exe --gen py src\thrift\data.thrift
 
+给Python安装 Thrift 支持：
+进入 Thrift包目录，执行如下命令生成的Python第三方依赖
+sudo python setup.py install
+安装目录为  d:\anaconda3\lib\site-packages\thrift-0.12.0-py3.6.egg
 
+实现 Java编写的服务端 与 Python编写的客户端 进行交互
+Python工程位于 pythrift 中，有 PyCharm 创建并运行试验
 
+在办公室电脑，无法实现 java client 与 python server 的连接（Exception in thread "main" java.lang.RuntimeException: java.net.ConnectException: Connection refused: connect）
+而可以实现 python client 与 java server 的连接

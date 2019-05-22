@@ -10,6 +10,7 @@ import thrift.generated.PersonService;
 
 public class ThriftClient {
     public static void main(String[] args) {
+        // 客户端使用的协议要与服务端相同，如：本例Client和Server都使用了 TFramedTransport 和 TCompactProtocol
         TTransport transport = new TFramedTransport(
                 new TSocket("localhost", 8899), 600);
         TProtocol protocol = new TCompactProtocol(transport);
@@ -17,6 +18,7 @@ public class ThriftClient {
 
         try {
             transport.open(); // 打开socket
+            // 调用 服务端方法
             Person person = client.getPersonByUsername("张三");
 
             System.out.println(person.getUsername());
